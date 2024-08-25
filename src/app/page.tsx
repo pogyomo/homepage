@@ -9,18 +9,16 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <>
-      <div className="grid grid-cols-5">
-        <Link href="./links" className={boxStyle}>
-          links
-        </Link>
-        <Link href="./works" className={boxStyle}>
-          works
-        </Link>
-        <TodoButton className={boxStyle}>todo</TodoButton>
-        <TodoButton className={boxStyle}>todo</TodoButton>
-        <TodoButton className={boxStyle}>todo</TodoButton>
-      </div>
-    </>
+    <div className="grid grid-cols-5">
+      <Link href="./links" className={boxStyle}>
+        links
+      </Link>
+      <Link href="./works" className={boxStyle}>
+        works
+      </Link>
+      <TodoButton className={boxStyle}>todo</TodoButton>
+      <TodoButton className={boxStyle}>todo</TodoButton>
+      <TodoButton className={boxStyle}>todo</TodoButton>
+    </div>
   );
 }
