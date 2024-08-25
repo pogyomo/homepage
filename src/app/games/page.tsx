@@ -7,7 +7,7 @@ export default function Games() {
     <>
       <h1 className="text-2xl text-center mb-4">Games</h1>
       <div className="grid grid-cols-5">
-        <Link href="./games/tic-tac-toe" className={boxStyle}>
+        <Link href="/games/tic-tac-toe" className={boxStyle}>
           tic-tac-toe
         </Link>
         <TodoButton className={boxStyle}>todo</TodoButton>
