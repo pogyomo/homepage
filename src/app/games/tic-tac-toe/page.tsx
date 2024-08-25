@@ -1,3 +1,5 @@
+import TictacToeBackend from "@/components/TicTacToe";
+
 export default function TicTacToe() {
-  return <p>工事中</p>;
+  return <TictacToeBackend />;
 }

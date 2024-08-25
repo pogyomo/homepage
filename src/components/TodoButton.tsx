@@ -34,7 +34,7 @@ const TodoButton: React.FC<Props> = ({ children, className }) => {
   const [count, setCount] = useState(0);
   return (
     <button
-      className={className}
+      className={className || ""}
       onClick={() => {
         TodoButtonOnClick({ count, setCount });
       }}
