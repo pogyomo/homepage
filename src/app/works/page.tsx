@@ -8,8 +8,8 @@ export const metadata: Metadata = {
 export default function Works() {
   return (
     <>
-      <h1 className="text-2xl text-center mb-4">Works</h1>
-      <h2 className="text-2xl text-center">Neovim Plugins</h2>
+      <h1 className="text-3xl text-center mb-4">Works</h1>
+      <h2 className="text-2xl text-center mb-4">Neovim Plugins</h2>
       <div className="grid grid-cols-3">
         <a href="https://github.com/pogyomo/submode.nvim" className={boxStyle}>
           submode.nvim
@@ -24,7 +24,7 @@ export default function Works() {
           cppguard.nvim
         </a>
       </div>
-      <h2 className="text-2xl text-center">Programming Languages</h2>
+      <h2 className="text-2xl text-center my-4">Programming Languages</h2>
       <div className="grid grid-cols-3">
         <a href="https://github.com/pogyomo/mini" className={boxStyle}>
           mini
