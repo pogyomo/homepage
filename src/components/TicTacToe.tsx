@@ -1,7 +1,7 @@
 "use client";
 
 import boxStyle from "@/lib/boxStyle";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 type Cell = " " | "f" | "s";
 type Row = [Cell, Cell, Cell];
@@ -82,6 +82,7 @@ const doTurn = ({
   setMove,
   row,
   col,
+  player,
 }: {
   board: Board;
   setBoard: Dispatch<SetStateAction<Board>>;
@@ -89,20 +90,52 @@ const doTurn = ({
   setMove: Dispatch<SetStateAction<"f" | "s">>;
   row: 0 | 1 | 2;
   col: 0 | 1 | 2;
-}): "continue" | "done" | "draw" => {
-  let nextBoard =
-    move == "f" ? board.setFirst(row, col) : board.setLast(row, col);
-  setMove(move == "f" ? "s" : "f");
-  setBoard(nextBoard);
-  if (nextBoard.checkWin(move)) return "done";
-  else if (nextBoard.checkDraw()) return "draw";
-  else return "continue";
+  player: "f" | "s";
+}) => {
+  try {
+    let nextBoard =
+      move == "f" ? board.setFirst(row, col) : board.setLast(row, col);
+    setMove(move == "f" ? "s" : "f");
+    setBoard(nextBoard);
+    if (nextBoard.checkWin(move)) {
+      if (move == player) {
+        alert("player win!");
+      } else {
+        alert("player lose...");
+      }
+      setBoard(new Board());
+      setMove("f");
+    } else if (nextBoard.checkDraw()) {
+      alert("draw!");
+      setBoard(new Board());
+      setMove("f");
+    }
+  } catch (e) {
+    alert(`${row}:${col} already filled`);
+  }
+};
+
+// TODO: More smart method
+const AI = (board: Board): [0 | 1 | 2, 0 | 1 | 2] => {
+  for (let row = 0; row < 3; row++) {
+    for (let col = 0; col < 3; col++) {
+      if (board.at(row as 0 | 1 | 2, col as 0 | 1 | 2) == " ")
+        return [row as 0 | 1 | 2, col as 0 | 1 | 2];
+    }
+  }
+  throw Error("no place to put");
 };
 
 const TicTacToe: React.FC = ({}) => {
   const [board, setBoard] = useState(new Board());
   const [move, setMove] = useState<"f" | "s">("f");
   const [player, setPlayer] = useState<"f" | "s">("f");
+  useEffect(() => {
+    if (move != player) {
+      let [row, col] = AI(board);
+      doTurn({ board, setBoard, move, setMove, row, col, player });
+    }
+  });
 
   let poses: [0 | 1 | 2, 0 | 1 | 2][] = [];
   for (let row = 0; row < 3; row++) {
@@ -123,6 +156,9 @@ const TicTacToe: React.FC = ({}) => {
 
   return (
     <>
+      <p className="text-center font-bold mb-4">
+        you're {player == "f" ? "first" : "second"} player
+      </p>
       <div className="flex justify-center">
         <div className="grid grid-cols-2">
           <button
@@ -133,7 +169,7 @@ const TicTacToe: React.FC = ({}) => {
               setPlayer("f");
             }}
           >
-            as first player
+            play as first player
           </button>
           <button
             className={boxStyle}
@@ -143,7 +179,7 @@ const TicTacToe: React.FC = ({}) => {
               setPlayer("s");
             }}
           >
-            reset as second player
+            play as second player
           </button>
         </div>
       </div>
@@ -156,31 +192,7 @@ const TicTacToe: React.FC = ({}) => {
               <button
                 className={`border-2 border-black ${cellColorByCellValue(board.at(row, col))}`}
                 onClick={() => {
-                  try {
-                    let result = doTurn({
-                      board,
-                      setBoard,
-                      move,
-                      setMove,
-                      row,
-                      col,
-                    });
-                    if (result == "done") {
-                      if (move == "f") {
-                        alert("first player win!");
-                      } else {
-                        alert("second player win!");
-                      }
-                      setBoard(new Board());
-                      setMove("f");
-                    } else if (result == "draw") {
-                      alert("draw!");
-                      setBoard(new Board());
-                      setMove("f");
-                    }
-                  } catch (e) {
-                    alert(`${row}:${col} already filled`);
-                  }
+                  doTurn({ board, setBoard, move, setMove, row, col, player });
                 }}
               />
             );
