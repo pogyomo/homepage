@@ -8,6 +8,7 @@ export const metadata: Metadata = {
 export default function Works() {
   return (
     <>
+      <h1 className="text-2xl text-center mb-4">Works</h1>
       <h2 className="text-2xl text-center">Neovim Plugins</h2>
       <div className="grid grid-cols-3">
         <a href="https://github.com/pogyomo/submode.nvim" className={boxStyle}>
