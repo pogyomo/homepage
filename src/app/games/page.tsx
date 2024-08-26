@@ -1,6 +1,11 @@
 import Link from "next/link";
 import TodoButton from "@/components/TodoButton";
 import boxStyle from "@/lib/boxStyle";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "games",
+};
 
 export default function Games() {
   return (

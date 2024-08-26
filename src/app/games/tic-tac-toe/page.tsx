@@ -1,4 +1,9 @@
 import TictacToeBackend from "@/components/TicTacToe";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "tic-tac-toe",
+};
 
 export default function TicTacToe() {
   return (
