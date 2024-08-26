@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 export default function TicTacToe() {
   return (
     <>
-      <h1 className="text-2xl text-center mb-4">TicTacToe</h1>
+      <h1 className="text-2xl text-center mb-4">tic-tac-toe</h1>
       <TictacToeBackend />
     </>
   );
