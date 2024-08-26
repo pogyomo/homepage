@@ -11,7 +11,7 @@ export default function Games() {
   return (
     <>
       <h1 className="text-2xl text-center mb-4">Games</h1>
-      <div className="grid grid-cols-5">
+      <div className="grid grid-cols-1 sm:grid-cols-5">
         <Link href="/games/tic-tac-toe" className={boxStyle}>
           tic-tac-toe
         </Link>

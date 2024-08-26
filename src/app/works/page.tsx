@@ -10,7 +10,7 @@ export default function Works() {
     <>
       <h1 className="text-2xl text-center mb-4">Works</h1>
       <h2 className="font-bold text-center mb-4">Neovim Plugins</h2>
-      <div className="grid grid-cols-3">
+      <div className="grid grid-cols-1 sm:grid-cols-3">
         <a href="https://github.com/pogyomo/submode.nvim" className={boxStyle}>
           submode.nvim
         </a>
@@ -25,7 +25,7 @@ export default function Works() {
         </a>
       </div>
       <h2 className="font-bold text-center my-4">Programming Languages</h2>
-      <div className="grid grid-cols-3">
+      <div className="grid grid-cols-1 sm:grid-cols-3">
         <a href="https://github.com/pogyomo/mini" className={boxStyle}>
           mini
         </a>
