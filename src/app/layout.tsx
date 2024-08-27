@@ -2,6 +2,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 
 import "./globals.css";
+import BreadcrumbList from "@/components/BreadcrumbList";
 
 export default function RootLayout({
   children,
@@ -12,6 +13,7 @@ export default function RootLayout({
     <html lang="jp">
       <body className="flex flex-col min-h-screen">
         <Header />
+        <BreadcrumbList />
         <div className="flex-grow">{children}</div>
         <Footer />
       </body>
