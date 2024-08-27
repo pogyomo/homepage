@@ -190,6 +190,7 @@ const TicTacToe: React.FC = ({}) => {
             let col = pos[1];
             return (
               <button
+                key={`${row}:${col}`}
                 className={`border-2 border-black ${cellColorByCellValue(board.at(row, col))}`}
                 onClick={() => {
                   doTurn({ board, setBoard, move, setMove, row, col, player });
