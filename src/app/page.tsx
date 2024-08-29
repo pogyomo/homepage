@@ -1,7 +1,6 @@
 import Link from "next/link";
-import TodoButton from "@/components/TodoButton";
-import type { Metadata } from "next";
 import boxStyle from "@/lib/boxStyle";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "toppage",
@@ -24,7 +23,9 @@ export default function Home() {
         <Link href="/games" className={boxStyle}>
           games
         </Link>
-        <TodoButton className={boxStyle}>todo</TodoButton>
+        <Link href="/dots" className={boxStyle}>
+          dots
+        </Link>
       </div>
     </>
   );
